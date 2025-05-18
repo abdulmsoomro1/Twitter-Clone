@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <!-- Left Sidebar -->
+    <div class="left-sidebar">
+        <div class="twitter-logo" id="twitterLogo">
+            <i class="fab fa-twitter"></i>
+        </div>
+        
+        <div class="menu-item active" data-section="home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </div>
+        
+        <div class="menu-item" data-section="explore">
+            <i class="fas fa-hashtag"></i>
+            <span>Explore</span>
+        </div>
+        
+        <div class="menu-item" data-section="notifications">
+            <i class="far fa-bell"></i>
+            <span>Notifications</span>
+        </div>
+        
+        <div class="menu-item" data-section="messages">
+            <i class="far fa-envelope"></i>
+            <span>Messages</span>
+        </div>
+        
+        <div class="menu-item" data-section="bookmarks">
+            <i class="far fa-bookmark"></i>
+            <span>Bookmarks</span>
+        </div>
+        
+        <div class="menu-item" data-section="lists">
+            <i class="far fa-list-alt"></i>
+            <span>Lists</span>
+        </div>
+        
+        <div class="menu-item" data-section="profile">
+            <i class="far fa-user"></i>
+            <span>Profile</span>
+        </div>
+        
+        <div class="menu-item" data-section="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>More</span>
+        </div>
+        
+        <button class="tweet-button" id="sidebarTweetBtn">Tweet</button>
+        <button class="delete-button" id="deleteBtn">Delete</button>
+    </div>
+    
+    <!-- Center Column -->
+    <div class="center-column">
+        <div class="content-section active" id="home">
+            <div class="top-bar">
+                Home
+            </div>
+            
+            <div class="tweet-composer">
+                <div class="profile-photo"></div>
+                <div class="tweet-input">
+                    <textarea id="tweetInput" placeholder="What's happening?"></textarea>
+                    <div class="tweet-actions">
+                        <div class="media-icons">
+                            <i class="far fa-image" data-action="image"></i>
+                            <i class="far fa-smile" data-action="emoji"></i>
+                            <i class="fas fa-chart-pie" data-action="chart"></i>
+                            <i class="far fa-calendar-alt" data-action="calendar"></i>
+                        </div>
+                        <button class="tweet-submit" id="tweetSubmitBtn">Tweet</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tweets-container" id="tweetsContainer">
+                <!-- Tweets will be dynamically inserted here -->
+            </div>
+        </div>
+        
+        <div class="content-section" id="explore">
+            <div class="top-bar">
+                Explore
+            </div>
+            <p>Explore trending topics and hashtags.</p>
+        </div>
+        
+        <div class="content-section" id="notifications">
+            <div class="top-bar">
+                Notifications
+            </div>
+            <p>Your notifications will appear here.</p>
+        </div>
+        
+        <div class="content-section" id="messages">
+            <div class="top-bar">
+                Messages
+            </div>
+            <p>Your messages will appear here.</p>
+        </div>
+        
+        <div class="content-section" id="bookmarks">
+            <div class="top-bar">
+                Bookmarks
+            </div>
+            <p>Your bookmarked tweets will appear here.</p>
+        </div>
+        
+        <div class="content-section" id="lists">
+            <div class="top-bar">
+                Lists
+            </div>
+            <p>Your lists will appear here.</p>
+        </div>
+        
+        <div class="content-section" id="profile">
+            <div class="top-bar">
+                Profile
+            </div>
+            <p>Your profile information will appear here.</p>
+        </div>
+        
+        <div class="content-section" id="more">
+            <div class="top-bar">
+                More
+            </div>
+            <p>Additional options will appear here.</p>
+        </div>
+    </div>
+    
+    <!-- Right Sidebar -->
+    <div class="right-sidebar">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search Twitter">
+        </div>
+        
+        <div class="trends">
+            <div class="section-title">Trends for you</div>
+            
+            <div class="trend-item">
+                <div class="trend-topic">#TwitterClone</div>
+                <div class="trend-count">12.5K Tweets</div>
+            </div>
+            
+            <div class="trend-item">
+                <div class="trend-topic">#WebDevelopment</div>
+                <div class="trend-count">45.2K Tweets</div>
+            </div>
+            
+            <div class="trend-item">
+                <div class="trend-topic">#UIUX</div>
+                <div class="trend-count">8.7K Tweets</div>
+            </div>
+            
+            <div class="trend-item">
+                <div class="trend-topic">#FrontEnd</div>
+                <div class="trend-count">15.3K Tweets</div>
+            </div>
+        </div>
+        
+        <div class="who-to-follow">
+            <div class="section-title">Who to follow</div>
+            
+            <div class="follow-item" data-user="johndoe">
+                <div class="follow-profile">
+                    <div class="profile-photo" style="width: 40px; height: 40px;"></div>
+                    <div class="follow-info">
+                        <div class="follow-name">John Doe</div>
+                        <div class="follow-handle">@johndoe</div>
+                    </div>
+                </div>
+                <button class="follow-button" data-user="johndoe">Follow</button>
+            </div>
+            
+            <div class="follow-item" data-user="janesmith">
+                <div class="follow-profile">
+                    <div class="profile-photo" style="width: 40px; height: 40px;"></div>
+                    <div class="follow-info">
+                        <div class="follow-name">Jane Smith</div>
+                        <div class="follow-handle">@janesmith</div>
+                    </div>
+                </div>
+                <button class="follow-button" data-user="janesmith">Follow</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-links">
+                <div class="footer-link" data-link="about">About</div>
+                <div class="footer-link" data-link="help">Help Center</div>
+                <div class="footer-link" data-link="terms">Terms of Service</div>
+                <div class="footer-link" data-link="privacy">Privacy Policy</div>
+                <div class="footer-link" data-link="cookie">Cookie Policy</div>
+                <div class="footer-link" data-link="ads">Ads info</div>
+                <div class="footer-link" data-link="blog">Blog</div>
+                <div class="footer-link" data-link="status">Status</div>
+                <div class="footer-link" data-link="careers">Careers</div>
+                <div class="footer-link" data-link="brand">Brand Resources</div>
+                <div class="footer-link" data-link="advertising">Advertising</div>
+                <div class="footer-link" data-link="marketing">Marketing</div>
+            </div>
+            <div class="footer-note">
+                Created by Abdul Rahim Soomro for educational purposes
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tweet Modal -->
+    <div class="modal-overlay" id="tweetModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Compose Tweet</h2>
+                <button class="modal-close" id="closeTweetModalBtn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="tweet-composer">
+                    <div class="profile-photo"></div>
+                    <div class="tweet-input">
+                        <textarea id="modalTweetInput" placeholder="What's happening?"></textarea>
+                        <div class="tweet-actions">
+                            <div class="media-icons">
+                                <i class="far fa-image" data-action="image"></i>
+                                <i class="far fa-smile" data-action="emoji"></i>
+                                <i class="fas fa-chart-pie" data-action="chart"></i>
+                                <i class="far fa-calendar-alt" data-action="calendar"></i>
+                            </div>
+                            <button class="tweet-submit" id="modalTweetSubmitBtn">Tweet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
